@@ -1,6 +1,57 @@
+
+% plan du cours (premier draft)
+
+% 1 - exercice de révision + correction
+% 2 - Introduction au classe : classe vs objet - Attribut.
+% 3 - Methode, self, Constructeur
+% 4 - Exercice finale (petite explication du code)
+
 \chapter{Level 1}
 \begin{figure}[ht]
-\includegraphics[scale=1]{stage_0.png} 
 \end{figure}
 
-%\section{Classe}
+\section{Introduction}
+
+Dans le premier cours ("Introduction à la programmation"), on avait toucher aux principes fondamentaux de la programmation dîtes \emph{procédurale}. Dans ce cours, qui peut être vu comme une suitre, nous irons plus en profondeur dans Python afin d'apprendre les bases de la programmation \emph{orientée objets}.
+
+\subsection{Programmation orientée objets, oui mais en Python}
+
+Ce cours, reste un cours de Python, donc, bien que nous verrons la programmation orientée objet, nous n'irons pas en dehors de ce que Python propose. J'entend par là que certains "principes" de l'orienté objets, ne correspondant pas à la philosophie de Python\footnote{"Keep it simple" (Garde çà simple).}, ne sont pas appliqué par ce langage, et donc ne seront pas illustré par ce cours\footnote{Ces principe seront surement abordé dans d'autres cours comme le cours de C\#.}.
+
+
+\section{Classes?, Objets?}
+
+Des \emph{Objets} vous en avez déjà rencontré pas mal sans les avoir nommé comme tel.
+J'en veux pour preuve que dans Python, tout est \emph{objet}\footnote{Ou du moins tout ce qui n'est pas une instruction}.
+
+Exemple:
+
+\begin{lstlisting}
+a = 1
+\end{lstlisting}
+
+Dans ce morceau de code, \codeintext{a} est un \emph{object}.
+D'ailleurs, tant qu'on y est, la classe de \codeintext{a} est \codeintext{int}.
+Vous allez me dire que \codeintext{int} c'est son \emph{type}. C'est vrai aussi, en Python le \emph{type} et la \emph{classe}.
+
+Bon cela ne nous dit pas vraiment ce qu'est une classe.
+
+\subsection{RPG Like}
+
+On peut faire le parallèle entre les la \emph{classe} d'un langage de programmation et celle d'un RPG\footnote{Role playing game (jeu de rôles)} et pareille entre les \emph{objets} et les personnages.
+Une \emph{classe} regroupe toute les caractéristiques qui définisse un \emph{type}, de la même façon que dans un RPG, la classe "mage" définit ce qu'est un mage, quel types de magie il peut utiliser et quels sont ces caractérisques.
+
+Et de la même façon que dans un groupe de personnages de RPG vous pouvez avoir plusieurs mages, étant différent l'un de l'autre; dans votre code vous aurez plusieurs \emph{objets} partageant la même \emph{classe}
+
+\begin{lstlisting}
+a = 1
+b = 3
+\end{lstlisting}
+
+Ici, \codeintext{a} et \codeintext{b} ont tout les deux pour classe \codeintext{int}.
+On dit que ce sont des \emph{instences} de la \emph{classe} \codeintext{int}.
+
+\subsection{Stage 1-1}
+
+% exercice 1
+
