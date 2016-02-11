@@ -60,3 +60,9 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# latex
+*.log
+*.toc
+*.synctex.gz
+*.out
