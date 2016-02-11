@@ -66,3 +66,4 @@ target/
 *.toc
 *.synctex.gz
 *.out
+*.aux
