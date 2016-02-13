@@ -41,7 +41,7 @@ Bon cela ne nous dit pas vraiment ce qu'est une classe.
 On peut faire le parallèle entre les la \emph{classe} d'un langage de programmation et celle d'un RPG\footnote{Role playing game (jeu de rôles)} et pareille entre les \emph{objets} et les personnages.
 Une \emph{classe} regroupe toute les caractéristiques qui définisse un \emph{type}, de la même façon que dans un RPG, la classe "mage" définit ce qu'est un mage, quel types de magie il peut utiliser et quels sont ces caractérisques.
 
-Et de la même façon que dans un groupe de personnages de RPG vous pouvez avoir plusieurs mages, étant différent l'un de l'autre; dans votre code vous aurez plusieurs \emph{objets} partageant la même \emph{classe}
+Et de la même façon que dans un groupe de personnages de RPG vous pouvez avoir plusieurs mages, étant différent l'un de l'autre; dans votre code vous aurez plusieurs \emph{objets} partageant la même \emph{classe}.
 
 \begin{lstlisting}
 a = 1
@@ -49,9 +49,78 @@ b = 3
 \end{lstlisting}
 
 Ici, \codeintext{a} et \codeintext{b} ont tout les deux pour classe \codeintext{int}.
-On dit que ce sont des \emph{instences} de la \emph{classe} \codeintext{int}.
+On dit que ce sont des \emph{instances} de la \emph{classe} \codeintext{int}.
 
 \subsection{Stage 1-1}
 
 % exercice 1
 
+\subsection{Attributs}
+
+L'une des caractéristiques d'une \emph{classe} est qu'elle peut posséder des \emph{attributs}, j'irais même plus loin: il est rare qu'elle n'en possède pas.
+
+Mais qu'est-ce qu'un attribut?
+
+Pour faire simple, un attribut est une \emph{variable} de \emph{classe}.
+
+\begin{lstlisting}
+
+hero = Hero()
+print(hero.position) 
+
+\end{lstlisting}
+
+Dans l'exemple ci-dessus, on voit que la variable \codeintext{hero} qui est une instance de la \emph{class} \codeintext{Hero}, possède un attribut \codeintext{position}. Cet \emph{attribut} définit la position d'un \codeintext{Hero} et est donc l'une de ses caractéristique.
+
+La plupart du temps, les attributs sont modifiables directement \footnotetext{Pour ce cours, çà sera tout le temps le cas.} 
+
+\begin{lstlisting}
+
+hero = Hero()
+hero.position = (3, 3)
+
+\end{lstlisting}
+
+Ci-dessus, le code modifie l'\emph{attribut} \codeintext{position} pour le rendre égale à \codeintext{(3, 3)}.
+
+\subsection{Un peu de méthode}
+
+L'autre caractéristique d'une \emph{classe} sont ses \emph{méthodes}.
+Si un \emph{attribut} peut être vu comme une \emph{variable} de \emph{classe}, une méthode peut être comparé à une \emph{fonction}.
+
+En claire, une \emph{méthode} est une \emph{fonction} qui ne concerne que la \emph{classe} et qui n'affectera que l'\emph{instance} qui l'appel.
+On peut voir les \emph{méthodes} comme des actions actives ou passives, disponible pour une \emph{classe}.
+
+\begin{lstlisting}
+
+hero = Hero()
+hero.move()
+
+\end{lstlisting}
+
+Dans cette exemple, on utilise la \emph{méthode} \codeintext{move} de la \emph{classe} \codeintext{Hero}.
+Cette \emph{méthode} agit très certainement sur la position.
+
+
+\subsection{Première classe}
+
+Il est bien beau de savoir ce qu'est une classe (même si avoue le, c'est encore floue). Mais il est encore mieux de savoir en faire soit même.
+
+\begin{lstlisting}
+class Hero:
+
+	def __init__(self):
+		self.position = (0, 0)
+		
+	def move(self)
+		x, y = self.position
+		self.position = x + 1, y
+
+\end{lstlisting}
+
+Voici la \emph{classe} \codeintext{Hero} enfin dévoilée.
+
+Regardons la de plus prêt:
+
+Pour écrire une \emph{classe}, il faut écrire \codeintext{class} suivit du nom de la \emph{classe}\footnote{Le nom des classes que vous créerez prendra toujours une majuscle}.
+Comme souvent en Python, tout le code lié à la \emph{classe}, sera indenté d'un rang par rapport à la déclaration de la \emph{classe}.
