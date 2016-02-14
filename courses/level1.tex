@@ -1,6 +1,166 @@
 \chapter{Level 1}
 \begin{figure}[ht]
-\includegraphics[scale=1]{stage_0.png} 
 \end{figure}
 
-%\section{Classe}
+\section{Introduction}
+
+Dans le premier cours ("Introduction à la programmation"), on avait toucher aux principes fondamentaux de la programmation dîtes \emph{procédurale}. Dans ce cours, qui peut être vu comme une suite, nous irons plus en profondeur dans Python afin d'apprendre les bases de la programmation \emph{orientée objets}.
+
+\subsection{Programmation orientée objets en Python}
+
+Ce cours, reste un cours de Python, donc, bien que nous verrons la programmation orientée objet, nous n'irons pas en dehors de ce que Python propose. J'entend par là que certains "principes" de l'orienté objets, ne correspondant pas à la philosophie de Python\footnote{"Keep it simple" (Garde çà simple).}, ne sont pas appliqué par ce langage, et donc ne seront pas illustré par ce cours\footnote{Ces principe seront surement abordé dans d'autres cours comme le cours de C\#.}.
+
+
+\section{Classes?, Objets?}
+
+Des \emph{Objets} vous en avez déjà rencontré pas mal sans les avoir nommé comme tel.
+J'en veux pour preuve que dans Python, tout est \emph{objet}\footnote{Ou du moins tout ce qui n'est pas une instruction}.
+
+Exemple:
+
+\begin{lstlisting}
+a = 1
+\end{lstlisting}
+
+Dans ce morceau de code, \codeintext{a} est un \emph{object}.
+D'ailleurs, tant qu'on y est, la classe de \codeintext{a} est \codeintext{int}.
+Vous allez me dire que \codeintext{int} c'est son \emph{type}. C'est vrai aussi, en Python le \emph{type} et la \emph{classe} sont assez similaire.
+
+Bon cela ne nous dit pas vraiment ce qu'est une classe.
+
+\subsection{RPG Like}
+
+On peut faire le parallèle entre les \emph{classes} d'un langage de programmation et celle d'un RPG\footnote{Role playing game (jeu de rôles)} et pareille entre les \emph{objets} et les personnages.
+Une \emph{classe} regroupe toute les caractéristiques qui définisse un \emph{type}, de la même façon que dans un RPG, la classe "mage" définit ce qu'est un mage, quels types de magie il peut utiliser et quels sont ces caractérisques.
+
+Et de la même façon que dans un groupe de personnages de RPG vous pouvez avoir plusieurs mages, étant différent l'un de l'autre; dans votre code vous aurez plusieurs \emph{objets} partageant la même \emph{classe}.
+
+\begin{lstlisting}
+a = 1
+b = 3
+\end{lstlisting}
+
+Ici, \codeintext{a} et \codeintext{b} ont tout les deux pour classe \codeintext{int}.
+On dit que ce sont des \emph{instances} de la \emph{classe} \codeintext{int}.
+
+\subsection{Attributs}
+
+L'une des caractéristiques d'une \emph{classe} est qu'elle peut posséder des \emph{attributs}, j'irais même plus loin: il est rare qu'elle n'en possède pas.
+
+Mais qu'est-ce qu'un attribut?
+
+Pour faire simple, un attribut est une \emph{variable} de \emph{classe}.
+
+\begin{lstlisting}
+hero = Hero()
+print(hero.position) 
+\end{lstlisting}
+
+Dans l'exemple ci-dessus, on voit que la variable \codeintext{hero} qui est une instance de la \emph{class} \codeintext{Hero}, possède un attribut \codeintext{position}. Cet \emph{attribut} définit la position d'un \codeintext{Hero} et est donc l'une de ses caractéristique.
+
+La plupart du temps, les attributs sont modifiables directement \footnotetext{Pour ce cours, çà sera tout le temps le cas.} 
+
+\begin{lstlisting}
+
+hero = Hero()
+hero.position = (3, 3)
+
+\end{lstlisting}
+
+Ci-dessus, le code modifie l'\emph{attribut} \codeintext{position} pour le rendre égale à \codeintext{(3, 3)}.
+
+\subsection{Un peu de méthode}
+
+L'autre caractéristique d'une \emph{classe} sont ses \emph{méthodes}.
+Si un \emph{attribut} peut être vu comme une \emph{variable} de \emph{classe}, une méthode peut être comparée à une \emph{fonction}.
+
+En clair, une \emph{méthode} est une \emph{fonction} qui ne concerne que la \emph{classe} et qui n'affectera que l'\emph{instance} qui l'appel.
+On peut voir les \emph{méthodes} comme des actions actives ou passives, disponible pour une \emph{classe}.
+
+\begin{lstlisting}
+hero = Hero()
+hero.move()
+\end{lstlisting}
+
+Dans cette exemple, on utilise la \emph{méthode} \codeintext{move} de la \emph{classe} \codeintext{Hero}.
+Cette \emph{méthode} agit sur la position du héros.
+
+\pagebreak
+\subsection{Première classe}
+
+Il est bien beau de savoir ce qu'est une classe (même si avouons-le, c'est encore flou). Mais il est encore mieux de savoir en faire soi-même.
+
+\begin{lstlisting}
+class Hero:
+
+	def __init__(self):
+		self.position = (0, 0)
+		
+	def move(self)
+		x, y = self.position
+		self.position = x + 1, y
+\end{lstlisting}
+
+Voici la \emph{classe} \codeintext{Hero} enfin dévoilée.
+
+Regardons-la de plus prêt:
+
+La première ligne est la déclaration de la classe.
+Pour écrire une \emph{classe}, il faut écrire "\codeintext{class}" suivit du nom de la \emph{classe}\footnote{Le nom des classes que vous créerez prendra toujours une majuscle}.
+Comme souvent en Python, tout le code lié à la \emph{classe}, sera indenté d'un rang par rapport à la déclaration de la \emph{classe}.
+
+Ensuite nous avons la définition de la première méthode, nommée \codeintext{\_\_init\_\_}\footnote{Vous noterez qu'une méthode se définit comme une fonction.}. Cette première méthode est nommée "\emph{constructeur}".
+Le constructeur est une méthode un peu à part. En effet, elle n'est appelée qu'une seule fois, lors de la création de l'\emph{objet}.
+
+Dans le cas de la classe \codeintext{Hero} le \emph{construteur} définit l'\emph{attribut} \codeintext{position} comme valant \codeintext{(0, 0)}.
+
+En gros, c'est le \emph{constructeur} qui construit l'objet.
+
+\begin{lstlisting}
+hero = Hero()
+\end{lstlisting}
+
+C'est au moment de l'\emph{affectation} de la variable \codeintext{hero} par une \emph{instance} de la classe \codeintext{Hero} que le constructeur est appelé.
+
+Une deuxième méthode est ensuite définie, c'est \codeintext{move} qui fait en sorte que la position du héros bougent de 1 sur l'axe des x.
+
+
+\subsection{"self", le paramêtre fantome}
+
+Si vous avez bien fait attention, vous aurez remarqué que chacune des \emph{méthodes} de la classe \codeintext{Hero}, possède un paramêtre \codeintext{self}. Vous aurez aussi remarqué que lors de l'appel de la \emph{méthode} \codeintext{move}, on n'avait fait appel à aucun argument. Quel est donc ce mystérieux paramêtre?
+
+En Python\footnote{Vous ne trouverez pas cette spécificité dans d'autre langage.}, lors de l'appel d'une méthode, l'\emph{instance} de la \emph{classe} elle-même est passée en première argument, de manière implicite. C'est l'interpréteur lui-même qui le rajoute de manière automatique.
+
+donc quand vous écrivez ceci:
+\begin{lstlisting}
+hero = Hero()
+hero.move()
+\end{lstlisting}
+
+L'interpréteur, lui va exécuter ceci:
+
+\begin{lstlisting}
+
+hero = Hero(hero)
+hero.move(hero)
+
+\end{lstlisting}
+
+Donc, les \emph{méthodes} doivent toujours avoir un paramêtre, qui par convention est nommé \codeintext{self} (parce que c'est l'objet lui-même), afin d'accueillir cette argument "fantôme" ajouté par l'interpréteur.
+
+Ce paramêtre a d'ailleurs beaucoup d'utilité, car il permet d'accéder aux \emph{attributs} de l'\emph{objet} au sein des méthodes.
+
+\begin{lstlisting}
+class Hero:
+
+	def __init__(self):
+		self.position = (0, 0)
+		
+	def move(self)
+		x, y = self.position
+		self.position = x + 1, y
+\end{lstlisting}
+
+Dans la méthode \codeintext{move} d'ailleurs, intervient sur la position du héros grâce à l'attribut \codeintext{position}. Elle accède a cette attribut via le paramêtre \codeintext{self}.
+
+Bien-sûr, il est possible d'avoir des \emph{méthodes} avec d'autres arguments que \codeintext{self}\footnote{Y compris dans le \emph{constructeur}}, mais lui, je le répète, doit toujours être présent dans la déclaration d'une méthode.
